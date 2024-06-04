@@ -1,0 +1,75 @@
+.teamGroup{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+.about h2{
+    color:white;
+    text-align: center;
+    padding: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+.teamGroup .team{
+    background: rgb(255, 255, 255);
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 15px rgb(143, 143, 143);
+    transition: all 0.3s;
+    /*cursor: pointer;*/
+    text-align: center;
+}
+
+.teamGroup .team:hover{
+    background: rgb(201, 201, 201);
+    transform: scale(1.05);
+}
+
+.teamGroup .team p{
+    color:black;
+}
+
+.teamGroup .team .avt{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 15px rgb(176, 176, 176);
+    margin: 10px;
+}
+.about .text{
+    text-align: center;
+    padding:50px;
+    font-weight: bold;
+    color:white; 
+    width: 60%;
+    font-size: large;
+    margin:auto;
+}
+.about .text p{
+    font-size: 50px;
+}
+.about h1{
+    text-align: center;
+}
+
+.linkLogo{
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+.linkLogo img{
+    width: 30px;
+    height: 30px;
+}
+.linkGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

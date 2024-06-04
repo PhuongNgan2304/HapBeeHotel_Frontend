@@ -1,0 +1,96 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.hero-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.homepage{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://www.casangelina.com/wp-content/themes/casangelina/assets/images/home/top.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out
+}
+
+.hotel-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes slideUp{
+    0%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% { /* Introduce a 50% delay for the arrow */
+        opacity: 0;
+      }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.hotel-name img{
+    max-width: 90%;
+    max-height: 90%;
+    filter: brightness(0.4);
+    margin-bottom: 250px;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    animation: slideUp 3s forwards;
+
+}
+
+.scrolldown {
+    position: absolute; 
+    bottom: 250px; 
+    left: 49%;
+    transform: translateX(-50%); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    transition: opacity 2s ease-in-out;
+    animation: slideUp 3s forwards ease-in-out 1s;
+}
+
+.scrolldown svg{
+    height: 100px;
+    color: rgb(248, 248, 246);
+}
+
+.scrolldown-text p{
+    position: absolute; 
+    vertical-align: baseline; 
+    bottom: 200px;  
+    left: 44%;
+    transform: translateX(-50%);  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;
+    transition: opacity 2s ease-in-out;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-indent: 50px;
+    letter-spacing: .8px;
+    font-weight: 300;
+    line-height: 2;
+    transition: opacity 2s ease-in-out;
+    animation: slideUp 3s forwards ease-in-out 1s;
+}
