@@ -4,17 +4,34 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: Arial, sans-serif;
+    background-color: white;
 }
 
-.hero-image{
+.container {
+    width: 100%; 
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-image {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100vh;
+    z-index: 2;
 }
 
-.homepage{
+.homepage {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -23,10 +40,10 @@ body, html {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 2s ease-in-out
+    transition: opacity 2s ease-in-out;
 }
 
-.hotel-name{
+.hotel-name {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,21 +51,30 @@ body, html {
     z-index: 10;
 }
 
-@keyframes slideUp{
-    0%{
+@keyframes slideUp {
+    0% {
         transform: translateY(100%);
         opacity: 0;
     }
     50% { /* Introduce a 50% delay for the arrow */
         opacity: 0;
-      }
-    100%{
+    }
+    100% {
         transform: translateY(0%);
         opacity: 1;
     }
 }
 
-.hotel-name img{
+@keyframes bounce {
+    0%, 100%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-20px)
+    }
+}
+
+.hotel-name img {
     max-width: 90%;
     max-height: 90%;
     filter: brightness(0.4);
@@ -56,41 +82,135 @@ body, html {
     opacity: 0;
     transition: opacity 2s ease-in-out;
     animation: slideUp 3s forwards;
-
 }
 
 .scrolldown {
-    position: absolute; 
-    bottom: 250px; 
+    position: absolute;
+    bottom: 250px;
     left: 49%;
-    transform: translateX(-50%); 
-    display: flex; 
-    justify-content: center; 
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
     align-items: center;
     transition: opacity 2s ease-in-out;
-    animation: slideUp 3s forwards ease-in-out 1s;
+    animation: slideUp 3s forwards ease-in-out 1s, bounce 2s infinite 3s;
 }
 
-.scrolldown svg{
+.scrolldown svg {
     height: 100px;
     color: rgb(248, 248, 246);
 }
 
-.scrolldown-text p{
-    position: absolute; 
-    vertical-align: baseline; 
-    bottom: 200px;  
+.scrolldown-text p {
+    position: absolute;
+    vertical-align: baseline;
+    bottom: 200px;
     left: 44%;
-    transform: translateX(-50%);  
-    display: flex;  
-    justify-content: center;  
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
     align-items: center;
     transition: opacity 2s ease-in-out;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     text-indent: 50px;
     letter-spacing: .8px;
     font-weight: 300;
     line-height: 2;
     transition: opacity 2s ease-in-out;
-    animation: slideUp 3s forwards ease-in-out 1s;
+    animation: slideUp 3s forwards ease-in-out 1s, bounce 2s infinite 3s;
+}
+
+.hero-image-small {
+    max-width: 90%;
+    max-height: 70%;
+    margin-bottom: 250px;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    animation: slideUp 3s forwards;
+}
+
+.two p {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.two img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transform: scale(0.8);
+}
+
+.two img.visible {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.two .container_1 {
+    width: 100%;
+    height: 100%;
+}
+
+.two .row {
+    width: 100%;
+    display: flex;
+}
+
+.two .col {
+    height: 100%;
+}
+
+.img-container {
+    width: fit-content;
+    height: 100%;
+}
+
+.img-container .left {
+    text-align: right;
+}
+
+.img-container p {
+    position: relative;
+    padding: 5px 0;
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+#row-1 {
+    height: 200px;
+}
+#row-2 {
+    height: 300px;
+}
+#row-3 {
+    height: 150px;
+}
+#row-4 {
+    height: 100%;
+    width: 100%;
+}
+.col:nth-child(1) {
+    flex: 3;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+.col:nth-child(2) {
+    flex: 4;
+    padding: 10px;
+}
+
+.img-container.right img {
+    clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+}
+.img-container.left img {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+}
+
+.whitespace {
+    width: 100%;
+    height: 300px;
 }

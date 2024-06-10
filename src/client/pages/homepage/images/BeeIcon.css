@@ -1,0 +1,9 @@
+.bee-icon{
+    position:absolute;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    transition: transform 0.01s ease-in-out;
+    will-change: transform;
+    z-index: 999;
+}
