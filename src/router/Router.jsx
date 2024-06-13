@@ -8,6 +8,7 @@ import Service from '../client/pages/service/Service';
 import AboutUs from '../client/pages/aboutUs/AboutUs';
 import ConfirmAccount from '../client/pages/register/confirmAccount/ConfirmAccount';
 import Homepage from '../client/pages/homepage/Homepage';
+import Bookbtn from '../client/pages/homepage/button/Bookbtn'
 import Booking from '../client/pages/booking/Booking';
 import Contact from '../client/pages/contact/Contact';
 import ServiceDetail from '../client/pages/serviceDetail/ServiceDetail';
@@ -73,6 +74,7 @@ const Router = () => {
         <Route path="/" element={<Homepage />} />
           <Route path="/HotelWebsiteFrontend" element={<Homepage />} />
           <Route path="/home" element={<Homepage />} />
+          <Route path="/bookbtn" element={<Bookbtn />} />
           {/* <Route path="/booking" element={<Booking />} />
           <Route path="/picking/:roomid" element={<PickRoom />} />
           <Route path='/room/:id' element={<RoomDetailClient />} />

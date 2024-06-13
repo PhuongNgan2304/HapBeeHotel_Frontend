@@ -4,18 +4,23 @@ import './Homepage.css';
 import logo from './logo1_hapbee.png';
 import { img_beach_building, img_beach, img_look, img_true_perf } from './images/Export_images';
 import BeeIcon from './images/Bee_icon';
+import Bookbtn from './button/Bookbtn'
 import { GoArrowDown } from "react-icons/go";
 
 const Homepage = () => {
   const audioRef = useRef(null);
   const [isHomePageVisible, setIsHomePageVisible] = useState(true);
+  // const [showBookNow, setShowBookNow] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       document.querySelector('.homepage').style.opacity = '1';
       document.querySelector('.hotel-name img').style.opacity = '1';
+      //document.querySelector('.Booknow').style.opacity = '1';
+      
+      //setShowBookNow(true); 
     }, 500);
-
+    
     if(audioRef.current){
       audioRef.current.play().catch(error => {
         console.error('Error playing audio:', error);
@@ -67,12 +72,12 @@ const Homepage = () => {
   return (
     <div className='container'>
       <BeeIcon/>
+      <div className="Booknow">
+          <Bookbtn/>
+      </div>
       <audio ref = {audioRef} src="./relaxing-audio-for-yoga-131673.mp3" loop autoPlay></audio>
       <section className='homepage'>
         <div className='hero-image'>
-          <div className='booknow-btn'>
-            
-          </div>
           <div className='hotel-name'>
             <img src={logo} alt="HapBee Hotel"/>
           </div>
