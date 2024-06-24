@@ -10,6 +10,7 @@ import ConfirmAccount from '../client/pages/register/confirmAccount/ConfirmAccou
 import Homepage from '../client/pages/homepage/Homepage';
 import Bookbtn from '../client/pages/homepage/button/Bookbtn'
 import Booking from '../client/pages/booking/Booking';
+import CustomCalendar from '../client/pages/booking/CustomCalendar';
 import Contact from '../client/pages/contact/Contact';
 import ServiceDetail from '../client/pages/serviceDetail/ServiceDetail';
 import Cart from '../client/pages/cart/Cart';
@@ -75,9 +76,10 @@ const Router = () => {
           <Route path="/HotelWebsiteFrontend" element={<Homepage />} />
           <Route path="/home" element={<Homepage />} />
           <Route path="/bookbtn" element={<Bookbtn />} />
-          {/* <Route path="/booking" element={<Booking />} />
-          <Route path="/picking/:roomid" element={<PickRoom />} />
-          <Route path='/room/:id' element={<RoomDetailClient />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/customcalendar" element={<CustomCalendar />} />
+          {/* <Route path="/picking/:roomid" element={<PickRoom />} /> */}
+          {/* <Route path='/room/:id' element={<RoomDetailClient />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/service" element={<Service />} />

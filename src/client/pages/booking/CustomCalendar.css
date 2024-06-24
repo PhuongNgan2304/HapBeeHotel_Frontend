@@ -1,0 +1,95 @@
+.calendar-container{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.react-calendar {
+    width: 60%;
+    max-width: none;
+    font-size: 1.5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: hsl(57, 85%, 29%);
+}
+
+.react-calendar__tile--active {
+    background: #9e9e9e;
+    color: white;
+}
+
+.react-calendar__tile--now {
+    background: hsl(57, 31%, 58%)
+}
+
+.react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+    color: #ababab;
+    cursor: not-allowed;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #cdcdcd;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #9e9e9e;
+}
+
+
+.react-calendar__tile {
+    position: relative;
+}
+
+.react-calendar__tile--selected,
+.react-calendar__tile--in-range,
+.react-calendar__tile--hover-range {
+    background: #9e9e9e !important;
+    color: white !important;
+}
+
+.tile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tile-content .price {
+    color: #3b2b15;
+    font-size: 0.8em;
+}
+
+.tile-content.selected .price{
+    color: white;
+}
+
+.tile-content.past {
+    opacity: 0.5;
+}
+
+.tile-content.selected,
+.tile-content.in-range,
+.tile-content.hover-range {
+    background: #9e9e9e;
+    color: white;
+}
+
+.tile-content.selected .price,
+.tile-content.in-range .price,
+.tile-content.hover-range .price {
+    color: white;
+}
+
+.tile-content.in-range:hover,
+.tile-content.in-range:focus,
+.tile-content.hover-range:hover,
+.tile-content.hover-range:focus {
+    background: #9e9e9e;
+    color: white;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #9e9e9e;
+}
+
