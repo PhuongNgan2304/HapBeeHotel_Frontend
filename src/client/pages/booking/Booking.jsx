@@ -77,11 +77,24 @@ import { SlUser } from "react-icons/sl";
 import { LuHotel } from "react-icons/lu";
 import { FaRegBuilding } from "react-icons/fa";
 import { IoCallOutline } from "react-icons/io5";
+import { IoCalendarOutline } from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 const Booking = () =>{
+  const[isGuestSelectionOpen, setIsGuestSelectionOpen] = useState(false);
+  const[isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+  const toggleGuestSelection = () =>{
+    setIsGuestSelectionOpen(!isGuestSelectionOpen);
+    setIsOverlayVisible(!isOverlayVisible);
+  }
   return ( 
     <div className='pageWrapper'>
+
+      {isOverlayVisible && (
+        <div className='overlay-background' onClick={toggleGuestSelection}></div>
+      )}
         <div className='user-bar_container'>
           <div className='user-bar_wrapper'>
             <div className='user-bar_left'>
@@ -125,11 +138,11 @@ const Booking = () =>{
               <span> 123 Thuy Van, Thang Tam, Vung Tau City, Ba Ria - Vung Tau</span>
             </p>
 
-            <p className='hero-image_phoneIcon'>
-            <span class="hero-image_phoneIcon" aria-hidden="true">
-              <IoCallOutline />
-            </span>
-            <span className='sr-only'>
+            <p className='hero-image_phone'>
+              <span class="hero-image_phoneIcon" aria-hidden="true">
+                <IoCallOutline />
+              </span>
+              <span className='sr-only'>
                 <span>Phone:</span>
               </span>
               <a href="tel:+84093939110">+84093939110</a>
@@ -137,6 +150,90 @@ const Booking = () =>{
           </div>
         </div>
       </div>
+
+        <div className='app_page-animation'>
+          <div className='product-availability-container_section'>
+            <div className='app_container'>
+              <div className='app_row'>
+                <main id='mainContent' className='app_col-sm-12 app_col-md-12 app_col-lg-8'>
+                  <header>
+                    <div>
+                      <div className='search-bar-container_wrapper'>
+                        <div className='sr-only' aria-live='assertive' aria-relevant='all'></div>
+                        <h2 className='sr-only'>
+                          <span>Search Bar</span>
+                        </h2>
+                        <div className='search-bar-container_inner'>
+                          <div className='search-bar-container_top'>
+                            {/* <div className='search-bar-container_guestsWrapper' onClick={() => setIsOverlayVisible(isOverlayVisible)}> */}
+                            <div className='search-bar-container_guestsWrapper'>
+                              <button className='search-bar-container_guests' 
+                                      aria-expanded="false" 
+                                      onClick={toggleGuestSelection}
+                                      style={{ backgroundColor: isGuestSelectionOpen ? '#EAEAEC' : '' }}
+                              >
+                                <SlUser className='icon-guest' style={{ color: isGuestSelectionOpen ? '#000' : '' }}/>
+                                <span className='search-bar-container-guest_label'>
+                                  <span>Guests</span>
+                                </span>
+                                {/* <span>? Adults</span>
+                                ,  
+                                <span> ? Children</span> */}
+                                <div className='search-bar-container_caret'></div>
+                              </button>
+
+                              <div className={`guests-selection-flyout_container ${isGuestSelectionOpen ? 'open' : ''}`}  id='guests-selection-flyout'>
+                                <fieldset>
+                                  <legend>
+                                    <div className='guests-selection-flyout_guestHeading'>
+                                      <h2 className='app_subheading2'>
+                                        <span>Select Guests</span>
+                                      </h2>
+                                    </div>
+                                  </legend>
+                                  <button className='guests-selection-flyout_closeButton' 
+                                          aria-label='Close' 
+                                          onClick={toggleGuestSelection}
+                                          >
+                                    <AiOutlineClose className='icon-close_guest' />
+                                  </button>
+                                </fieldset>
+                              </div>
+                            </div>
+
+
+
+
+
+                            <button className='search-bar-container_checkIn' aria-label='Check-in .....' aria-expanded='false' aria-controls='calendar-flyout-container'>
+                              <IoCalendarOutline className='icon-calendar' />
+                              <span className='search-bar-container-calendar_label'>
+                                <span>Check-in</span>
+                              </span>
+                            </button>
+                            <button className='search-bar-container_checkOut' aria-label='Check-out .....' aria-expanded='false' aria-controls='calendar-flyout-container'>
+                              <IoCalendarOutline className='icon-calendar' />
+                              <span className='search-bar-container-calendar_label'>
+                                <span>Check-out</span>
+                              </span>
+                            </button>
+                          </div>
+                          <div className='search-bar-container_advancedSearch'>
+
+                          </div>
+                          <div className='search-bar-container_mobileSearch'>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      
     </div>
   );
 };

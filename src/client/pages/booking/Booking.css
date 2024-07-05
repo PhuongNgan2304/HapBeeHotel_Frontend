@@ -39,7 +39,7 @@
 } */
 
 body, html{
-    background: #fff;
+    background-color: white;
     color: #333333;
     font-size: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -48,12 +48,15 @@ body, html{
     line-height: 1.3;
     word-break: break-word;
 }
+*{
+    box-sizing: border-box;
+}
 .pageWrapper{
     margin: 0;
     padding: 0;
     border: 0;
     font: inherit;
-    vertical-align: baseline;
+    vertical-align: foine;
 }
 .user-bar_container {
     background: #fff;
@@ -141,7 +144,7 @@ body, html{
     display: inline-block;
     line-height: 1em;
     font-size: 1em;
-    vertical-align: baseline;
+    vertical-align: foine;
     font-weight: normal;
     margin-right: 5px;
     transition: transform 0.2s;
@@ -194,7 +197,7 @@ body, html{
     display: inline-block;
     line-height: 1em;
     font-size: 1em;
-    vertical-align: baseline;
+    vertical-align: foine;
     font-weight: normal;
     margin-right: 5px;
     transition: transform 0.2s;
@@ -286,4 +289,373 @@ p{
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+}
+
+.hero-image_phone{
+    display: flex;
+    margin-bottom: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 20px;
+}
+
+.hero-image_phoneIcon{
+    padding-top: 10px;
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.hero-image_phoneIcon:before{
+    vertical-align: top;
+    font-size: 1.2rem;
+    display: inline-block;
+    line-height: 1em;
+    font-weight: normal;
+}
+
+.hero-image_phone a{
+    padding-top: 5px;
+}
+
+.app_page-animation{
+    animation: appFadeIn 0.8s;
+    position: relative;
+}
+
+@keyframes appFadeIn{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.product-availability-container_section{
+    padding-bottom: 2rem;
+    background-color: white;
+}
+
+.app_row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+@media (min-width: 1025px){
+    .app_col-lg-8{
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+}
+
+@media (min-width: 768px){
+    .app_col-md-12{
+        -webkit-box-flex: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.app_col-lg-8, .app_col-md-12, .app_col-sm-12{
+    position: relative;
+    min-height: 1px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+    width: 100%;
+}
+
+header{
+    display: block;
+    unicode-bidi: isolate;
+}
+
+main{
+    display: block;
+}
+
+.search-bar-container_wrapper{
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.search-bar-container_inner{
+    background: #fff;
+    border: 1px solid rgba(148, 135, 138, 0.3);
+    border-radius: 0;
+    position: relative;
+}
+
+.search-bar-container_top {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    /* background: rgb(148, 172, 193); */
+}
+
+.search-bar-container_guestsWrapper{
+    display: flex;
+    position: relative;
+    flex-grow: 2;
+}
+
+html[dir=ltr] .search-bar-container_guests{
+    border-right: 1px solid rgba(148, 135, 138, 0.3);
+}
+
+.search-bar-container_guests{
+    background:none;
+    border-right: 1px solid rgba(148, 135, 138, 0.3);
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    vertical-align: middle;
+    position: relative;
+    color: #333333;
+    font-weight: 400;
+    font-size: 1rem;
+    flex-grow: 2;
+}
+
+.search-bar-container_guests.search-bar-container_selected {
+    background: #EAEAEC;
+}
+
+html[dir=ltr] .search-bar-container_guests .icon-guest {
+    left: 1rem;
+}
+
+html[dir=ltr] .search-bar-container_guests::before{
+    margin-right: .25em;
+}
+
+.search-bar-container_guests .icon-guest{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px
+}
+
+.search-bar-container_guests::before{
+    display: inline-block;
+    line-height: 1em;
+}
+
+.search-bar-container_guests .search-bar-container-guest_label{
+    font-weight: 700;
+    display: block;
+    font-size: 20px;
+    padding-left: 40px;
+    color: #666;
+}
+
+html[dir=ltr] .search-bar-container_caret {
+    left: 1.5rem;
+}
+
+.search-bar-container_caret{
+    background: #fff;
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    position: absolute;
+    bottom: 2.1rem;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 1rem;
+    border-top: 1px solid rgba(148, 135, 138, 0.3);
+    border-left: 1px solid rgba(148, 135, 138, 0.3);
+    z-index: 100;
+}
+
+html[dir=ltr] .search-bar-container_checkIn{
+    border-right: 1px solid rgba(148, 135, 138, 0.3);
+}
+
+.search-bar-container_checkIn{
+    border-right: 1px solid rgba(148, 135, 138, 0.3);
+    background: none;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    vertical-align: middle;
+    padding: .5rem .5rem .5rem 3rem;
+    position: relative;
+    color: #666;
+    font-weight: 400;
+    font-size: 1rem;
+    flex-grow: 2;
+}
+
+header, div, fieldset, legend{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: foine;
+}
+
+html[dir=ltr] .search-bar-container_checkIn .icon-calendar{
+    margin-left: 10px;
+}
+
+.search-bar-container_checkIn .icon-calendar{
+    margin-left: -30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px
+}
+
+.search-bar-container_checkIn .search-bar-container-calendar_label{
+    font-weight: 700;
+    color: #666;
+    display: block;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.search-bar-container_checkOut{
+    border-right: 1px solid rgba(148, 135, 138, 0.3);
+    border-right-width: 0;
+    border-bottom: 0;
+    background: none;
+    border: 0;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    vertical-align: middle;
+    padding: .5rem .5rem .5rem 3rem;
+    position: relative;
+    color: #666;
+    font-weight: 400;
+    font-size: 1rem;
+    flex-grow: 2;
+}
+.search-bar-container_checkOut .icon-calendar{
+    margin-left: -30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px
+}
+
+.search-bar-container_checkOut .search-bar-container-calendar_label{
+    font-weight: 700;
+    color: #666;
+    display: block;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.guests-selection-flyout_container{
+    left: 0;
+    padding: 1rem 1rem 0.5rem;
+    background: #fff;
+    border: 1px solid rgba(148, 135, 138, 0.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    border-radius: 0;
+    margin-top: 1rem;
+    position: absolute;
+    top: 100%;
+    z-index: 999;
+    width: 275px;
+}
+
+fieldset{
+    min-width: inherit;
+    width: 100%;
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+
+.guests-selection-flyout_container fieldset>legend {
+    display: block;
+    width: 100%;
+}
+
+legend{
+    box-sizing: border-box;
+    color: inherit;
+    max-width: 100%;
+    white-space: normal;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    unicode-bidi: isolate;
+}
+
+.guests-selection-flyout_guestHeading{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(148, 135, 138, 0.3);
+}
+
+.guests-selection-flyout_guestHeading h2 {
+    padding: 0 1rem 1rem 0;
+}
+
+.app_subheading2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.guests-selection-flyout_closeButton{
+    display: block;
+    min-height: 48px;
+    min-width: 48px;
+    background: transparent;
+    border: 0;
+    color: black;
+    position: absolute;
+    top: 5px;
+    right: -1px;
+    /* right: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    margin: -1rem -1rem 0 0; */
+}
+
+.guests-selection-flyout_closeButton .icon-close_guest{
+    margin-right: 0;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1em;
+    font-family: 'spark-icon-line';
+    vertical-align: baseline;
+}
+
+.guests-selection-flyout_container{
+    display: none;
+}
+
+.guests-selection-flyout_container.open{
+    display: block;
+}
+
+.overlay-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+}
+
+.search-bar-container_wrapper {
+    background-color: white;
+    z-index: 9990;
 }
