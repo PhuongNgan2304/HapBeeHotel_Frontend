@@ -71,7 +71,7 @@
 
 // export default Booking
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Booking.css'
 import { SlUser } from "react-icons/sl";
 import { LuHotel } from "react-icons/lu";
@@ -79,16 +79,31 @@ import { FaRegBuilding } from "react-icons/fa";
 import { IoCallOutline } from "react-icons/io5";
 import { IoCalendarOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
-
+import { HiOutlineMinus } from "react-icons/hi";
+import { AiOutlinePlus } from "react-icons/ai";
+import { GuestContext } from '../../../router/Router';
 
 const Booking = () =>{
   const[isGuestSelectionOpen, setIsGuestSelectionOpen] = useState(false);
   const[isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const[isCaretOpen, setIsCaretOpen] = useState(false);
+
+  // const[adults, setAdults] = useState(1);
+  // const[children, setChildren] = useState(0);
 
   const toggleGuestSelection = () =>{
     setIsGuestSelectionOpen(!isGuestSelectionOpen);
     setIsOverlayVisible(!isOverlayVisible);
+    setIsCaretOpen(!isCaretOpen);
   }
+
+  const { adults, setAdults, children, setChildren } = useContext(GuestContext);
+  const incrementAdults = () =>setAdults(adults+1);
+  const decrementAdults = () => setAdults(Math.max(1, adults-1));// Đảm bảo luôn ở mức tối thiểu là 1 guest
+
+  const incrementChildren = () =>setChildren(children+1);
+  const decrementChildren = () => setChildren(Math.max(0, children-1));// Đảm bảo luôn ở mức tối thiểu là 0 child
+  
   return ( 
     <div className='pageWrapper'>
 
@@ -176,10 +191,11 @@ const Booking = () =>{
                                 <span className='search-bar-container-guest_label'>
                                   <span>Guests</span>
                                 </span>
+                                <span className='number-of-people'>{adults} Adult{adults > 1 ? 's' : ''}, {children} Child{children > 1 ? 'ren' : ''}</span>
                                 {/* <span>? Adults</span>
                                 ,  
                                 <span> ? Children</span> */}
-                                <div className='search-bar-container_caret'></div>
+                                <div className={`search-bar-container_caret ${isCaretOpen ? 'open' : ''}`}></div>
                               </button>
 
                               <div className={`guests-selection-flyout_container ${isGuestSelectionOpen ? 'open' : ''}`}  id='guests-selection-flyout'>
@@ -197,6 +213,67 @@ const Booking = () =>{
                                           >
                                     <AiOutlineClose className='icon-close_guest' />
                                   </button>
+                                  <div className='guest-quantity-selection_container' role='presentation'>
+                                    <div>
+                                      <div className='quantity-selection_container'>
+                                        <span>Adults</span> 
+                                        <div className='quantity-selection_wrapper'>
+                                          <button className='button_btn button_primary button_md' aria-label='Remove one Adult' onClick={decrementAdults}>
+                                            <span className='button_subtract'>
+                                              <HiOutlineMinus className='icon-minus' />
+                                            </span>
+                                          </button>
+                                          <div className='input-field_container input-field_active'>
+                                            <label htmlFor="adultsInput">
+                                              {/* <span className='input-field_label'>Adults</span> */}
+                                              <input id='adultsInput' type='text' placeholder aria-label='Adults' value={adults} readOnly/>
+                                            </label>
+                                            <div aria-live='assertive' aria-relevant='all' aria-atomic='true' aria-hidden='false'></div>
+                                          </div>
+                                          <button className='button_btn button_primary button_md' aria-label='Add one Adult' onClick={incrementAdults}>
+                                            <span className='button_add'>
+                                              <AiOutlinePlus className='icon-plus' />
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div>
+                                      <div className='quantity-selection_container'>
+                                        <span>Children</span>
+                                        <div className='quantity-selection_wrapper'>
+                                          <button className='button_btn button_primary button_md' aria-label='Remove one Child' onClick={decrementChildren}>
+                                            <span className='button_subtract'>
+                                              <HiOutlineMinus className='icon-minus' />
+                                            </span>
+                                          </button>
+                                          <div className='input-field_container input-field_active'>
+                                            <label htmlFor="childrenInput">
+                                              {/* <span className='input-field_label'>Adults</span> */}
+                                              <input id='childrenInput' type='text' placeholder aria-label='Children' value={children} readOnly/>
+                                            </label>
+                                            <div aria-live='assertive' aria-relevant='all' aria-atomic='true' aria-hidden='false'></div>
+                                          </div>
+                                          <button className='button_btn button_primary button_md' aria-label='Add one Child' onClick={incrementChildren}>
+                                            <span className='button_add'>
+                                              <AiOutlinePlus className='icon-plus' />
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className='button_group'>
+                                    <button className='button_link'>
+                                      <span>Cancel</span>
+                                    </button>
+
+                                    <button className='button_btn button_primary button_sm'>
+                                      <span>Apply</span>
+                                    </button>
+                                  </div>
                                 </fieldset>
                               </div>
                             </div>

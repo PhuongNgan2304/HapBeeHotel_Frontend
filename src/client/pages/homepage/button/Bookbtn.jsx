@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Transition, CSSTransition } from 'react-transition-group';
 import { DatePicker, Space } from 'antd';
 import 'antd/dist/reset.css';
 import moment from 'moment';
 import './Bookbtn.css';
 import { IoMdReturnLeft } from 'react-icons/io';
+import { GuestContext } from '../../../../router/Router';
+import { useNavigate } from 'react-router-dom';
 
 const Triangularbutton = () =>{
+    const { adults, setAdults, children, setChildren } = useContext(GuestContext);
     const [showModal, setShowModal] = useState(false);
     const [disappearModal, setDisappearModal] = useState(false);
     const [checkInDate, setCheckInDate] = useState('');
@@ -14,6 +17,8 @@ const Triangularbutton = () =>{
     const [showToast, setShowToast] = useState(false);
     const [showToast_1, setShowToast_1] = useState(false);
     const [showToast_2, setShowToast_2] = useState(false);
+    const [guestCount, setGuestCount] = useState(1);
+    const navigate = useNavigate();
 
     const handleBookNowClick = () =>{
         setShowModal(true);
@@ -47,6 +52,10 @@ const Triangularbutton = () =>{
     const handleCheckOutDateChange = (event) => {
         setCheckOutDate(event.target.value);
     }
+
+    const handleGuestChange = (event) => {
+        setGuestCount(event.target.value);
+    };
     
     const handleSubmit = () =>{
         if(checkInDate === '' && checkOutDate === ''){
@@ -70,6 +79,11 @@ const Triangularbutton = () =>{
             return;
         }
 
+        //Set the number of guests
+        const selectedGuestCount = parseInt(guestCount, 10);
+        setAdults(selectedGuestCount > 0 ? selectedGuestCount : 1);
+
+        navigate('/booking');
         
     }
 
@@ -115,24 +129,7 @@ const Triangularbutton = () =>{
                 )}
             </Transition>
 
-            {/* <CSSTransition
-                in={true}
-                timeout={500}
-                classNames="bookbtn"
-                appear
-            >
-                {state => (
-                    <div className={`bookbtn ${state}`}>
-                        <a href="#" onClick={handleBookNowClick}>
-                            <span>BOOK NOW</span>
-                            <span>BOOK NOW</span>
-                        </a>
-                    </div>
-                )}
-            </CSSTransition> */}
-
 {showModal && (
-            // <div className={`modal-overlay ${showModal ? 'show' : 'disappear'}`}>
             <div className={`modal-overlay ${disappearModal ? 'disappear' : ''}`}>
                
                     <div className='modal'>
@@ -174,7 +171,7 @@ const Triangularbutton = () =>{
                             </label>
                             <label className='guest'>
                                 Guests  
-                                <select>
+                                <select value={guestCount} onChange={handleGuestChange}>
                                 <option value="1">1 Guest</option>
                                 <option value="2">2 Guests</option>
                                 <option value="3">3 Guests</option>
@@ -185,7 +182,6 @@ const Triangularbutton = () =>{
                                 <option value="8">8 Guests</option>
                                 <option value="9">9 Guests</option>
                                 <option value="10">10 Guests</option>
-                                <option value="11">10+ Guests</option>
                                 </select>
                             </label>
                         </div>
