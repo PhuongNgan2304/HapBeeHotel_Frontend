@@ -2,17 +2,43 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, Element, animateScroll as scroll } from 'react-scroll';
 import './Homepage.css';
 import logo from './logo1_hapbee.png';
-import { img_beach_building, img_beach, img_look, img_true_perf } from './images/Export_images';
+import { img_beach_building, img_beach, img_look, img_true_perf, flower_1 } from './images/Export_images';
 import BeeIcon from './images/Bee_icon';
 import Bookbtn from './button/Bookbtn'
 import { GoArrowDown } from "react-icons/go";
+// import LocomotiveScroll from 'locomotive-scroll';
+// import LocomotiveScroll_CSS from 'locomotive-scroll/dist/locomotive-scroll.css';
 
 const Homepage = () => {
   const audioRef = useRef(null);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
   const [isHomePageVisible, setIsHomePageVisible] = useState(true);
   // const [showBookNow, setShowBookNow] = useState(false);
 
   useEffect(() => {
+    // const scroll  = new LocomotiveScroll ({
+    //   el: document.querySelector('.container'),
+    //   smooth: true
+    // });
+
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const section = document.querySelector('.homepage');
+      if (scrollTop > lastScrollTop) {
+        // Cuộn xuống
+        section.classList.add('scrolled-down');
+        section.classList.remove('scrolled-up');
+      } else {
+        // Cuộn lên
+        section.classList.add('scrolled-up');
+        section.classList.remove('scrolled-down');
+      }
+
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); 
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+
     setTimeout(() => {
       document.querySelector('.homepage').style.opacity = '1';
       document.querySelector('.hotel-name img').style.opacity = '1';
@@ -45,6 +71,7 @@ const Homepage = () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     const images = document.querySelectorAll('.img-container img');
+    const flower_image = document.querySelectorAll('.flower-background img');
     const text = document.querySelectorAll('.reveal');
     // const text = document.querySelectorAll('.introText-right p');
 
@@ -52,22 +79,33 @@ const Homepage = () => {
       observer.observe(image);
     });
 
+    flower_image.forEach(f_image =>{
+      observer.observe(f_image);
+    })
+
     text.forEach(t =>{
       observer.observe(t);
     })
 
     return () => {
+      //scroll.destroy;
+
+      window.removeEventListener('scroll', handleScroll);
+
       if (audioRef.current) {
         audioRef.current.pause();
       }
       images.forEach(image => {
         observer.unobserve(image);
       });
+      flower_image.forEach(f_image =>{
+        observer.unobserve(f_image);
+      });
       text.forEach(t => {
         observer.unobserve(t);
       });
     };
-  }, []);
+  }, [lastScrollTop]);
 
   return (
     <div className='container'>
@@ -104,7 +142,16 @@ const Homepage = () => {
                   <img src={img_look} alt="img_look" />
                 </div>
               </div>
-              <div className="col"></div>
+              <div className="col">
+                <div className="flower-background flower-background-right">
+                  <img src={flower_1} alt="flower_1" />
+                </div>
+              </div>
+              {/* <div className="col">
+                <div className='flower_background right'>
+                  <img src={flower_1} alt="flower_1" />
+                </div>
+              </div> */}
             </div>
             <div className="row" id="row-2">
               <div className="col"></div>

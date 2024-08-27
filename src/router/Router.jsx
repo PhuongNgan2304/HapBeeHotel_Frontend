@@ -2,7 +2,7 @@ import React, { useEffect, useState, createContext } from 'react'
 import { RiMenuFill, RiMenuUnfoldLine } from 'react-icons/ri';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from '../client/components/navbar/Navbar';
-import Login from '../client/pages/login/Login';
+import Signup_new from '../client/pages/login/Signup_new';
 import Register from '../client/pages/register/Register';
 import Service from '../client/pages/service/Service';
 import AboutUs from '../client/pages/aboutUs/AboutUs';
@@ -29,7 +29,9 @@ import User from '../management/page/user/User';
 import PaymentClient from '../client/pages/paymentClient/PaymentClient';
 import ContactManagement from '../management/page/contactManagement/ContactManagement';
 
+
 export const GuestContext = createContext();
+
 const Router = () => {
   const [navIsOpen, setNavIsOpen] = useState(true);
   const navigate = useNavigate();
@@ -76,27 +78,28 @@ const Router = () => {
       <div>
         {/* <MessageBox /> */}
         <GuestContext.Provider value={{ adults, setAdults, children, setChildren }}>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/HotelWebsiteFrontend" element={<Homepage />} />
-            <Route path="/home" element={<Homepage />} />
-            <Route path="/bookbtn" element={<Bookbtn />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/customcalendar" element={<CustomCalendar />} />
-            {/* <Route path="/picking/:roomid" element={<PickRoom />} /> */}
-            {/* <Route path='/room/:id' element={<RoomDetailClient />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/service" element={<Service />} />
-            <Route path='/service/:serviceId' element={<ServiceDetail />} />
-            <Route path="/order" element={<h1>Order của bạn</h1>} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/confirm-register/:email" element={<ConfirmAccount />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/payment/:id" element={<PaymentClient />} />
-            <Route path="/*" element={<><h1>404 not found</h1> <p>Tính năng đang được bảo trì hoặc phát triển!</p></>} /> */}
-          </Routes> 
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/HotelWebsiteFrontend" element={<Homepage />} />
+              <Route path="/home" element={<Homepage />} />
+              <Route path="/bookbtn" element={<Bookbtn />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/customcalendar" element={<CustomCalendar />} />
+              <Route path="/signup" element={<Signup_new/>}/>
+              {/* <Route path="/picking/:roomid" element={<PickRoom />} /> */}
+              {/* <Route path='/room/:id' element={<RoomDetailClient />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/service" element={<Service />} />
+              <Route path='/service/:serviceId' element={<ServiceDetail />} />
+              <Route path="/order" element={<h1>Order của bạn</h1>} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/confirm-register/:email" element={<ConfirmAccount />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/payment/:id" element={<PaymentClient />} />
+              <Route path="/*" element={<><h1>404 not found</h1> <p>Tính năng đang được bảo trì hoặc phát triển!</p></>} /> */}
+            </Routes> 
         </GuestContext.Provider>
         {/* <div className="cart" onClick={() => navigate("/cart")}>
           <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG10.png" alt="" />

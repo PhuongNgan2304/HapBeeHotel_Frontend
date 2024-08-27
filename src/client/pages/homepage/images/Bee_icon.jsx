@@ -24,7 +24,7 @@ const BeeIcon = () =>{
         };
 
         const updateBeePosition = () =>{
-            const speed = 0.1;
+            const speed = 0.3;  
             beeX += (mouseX - beeX) * speed;
             beeY += (mouseY - beeY) * speed;
 

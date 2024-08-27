@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './CustomCalendar.css';
 
-const CustomCalendar = () =>{
+const CustomCalendar = ({onDateChange}) =>{
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [startMonth, setStartMonth] = useState(new Date().getMonth());
     const currentDate = new Date();//Ngày hiện tại
@@ -54,12 +54,15 @@ const CustomCalendar = () =>{
         if(!startDate || (startDate && endDate)){
             setStartDate(date);
             setEndDate(null);
+            onDateChange([date, null]);
         } else {
             if(date < startDate){
                 setEndDate(startDate);
                 setStartDate(date);
+                onDateChange([date, startDate]);
             } else{
                 setEndDate(date);
+                onDateChange([startDate, date]); 
             }
         }
     };
@@ -136,36 +139,23 @@ const CustomCalendar = () =>{
     
 
     return(
-        <div className='calendar-container'>
-            <Calendar
-                // onChange={setSelectedDate}
-                // value={selectedDate}
-                selectRange={true}
-                onChange={handleDateChange}
-                value={startDate}
-                //onMouseOver={({ activeStartDate, date }) => handleMouseEnter(date)}
-                tileContent={renderTileContent}
-                tileDisabled={({ date }) => isPastDate(date)}
-                view='month'
-                //Hiển thị tháng hiện tại
-                activeStartDate={new Date(selectedDate.getFullYear(), startMonth, 1 )}
-                onActiveStartDateChange={handleActiveStartDateChange}
-            />
-
-            {/* <Calendar
-                // onChange={setSelectedDate}
-                // value={selectedDate}
-                selectRange={true}
-                onChange={handleDateChange}
-                value={startDate}
-                //onMouseOver={({ activeStartDate, date }) => handleMouseEnter(date)}
-                tileContent={renderTileContent}
-                tileDisabled={({ date }) => isPastDate(date)}
-                view='month'
-                //Hiển thị tháng kế tiếp
-                activeStartDate={new DSate(selectedDate.getFullYear(), startMonth+1, 1)}
-                onActiveStartDateChange={handleActiveStartDateChange}
-            /> */}
+        <div>
+                <div className='calendar-container'>
+                    <Calendar
+                        // onChange={setSelectedDate}
+                        // value={selectedDate}
+                        selectRange={true}
+                        onChange={handleDateChange}
+                        value={startDate}
+                        //onMouseOver={({ activeStartDate, date }) => handleMouseEnter(date)}
+                        tileContent={renderTileContent}
+                        tileDisabled={({ date }) => isPastDate(date)}
+                        view='month'
+                        //Hiển thị tháng hiện tại
+                        activeStartDate={new Date(selectedDate.getFullYear(), startMonth, 1 )}
+                        onActiveStartDateChange={handleActiveStartDateChange}
+                    />
+                </div>
         </div>
     );
 };

@@ -6,4 +6,6 @@
     transition: transform 0.01s ease-in-out;
     will-change: transform;
     z-index: 999;
+    top: -40px;
+    left: -35px;
 }

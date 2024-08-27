@@ -71,7 +71,7 @@
 
 // export default Booking
 
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './Booking.css'
 import { SlUser } from "react-icons/sl";
 import { LuHotel } from "react-icons/lu";
@@ -82,11 +82,19 @@ import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMinus } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { GuestContext } from '../../../router/Router';
+import CustomCalendar from './CustomCalendar';
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Booking = () =>{
   const[isGuestSelectionOpen, setIsGuestSelectionOpen] = useState(false);
   const[isOverlayVisible, setIsOverlayVisible] = useState(false);
   const[isCaretOpen, setIsCaretOpen] = useState(false);
+
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [calendarType, setCalendarType] = useState(''); // 'checkin' or 'checkout'
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
 
   // const[adults, setAdults] = useState(1);
   // const[children, setChildren] = useState(0);
@@ -97,6 +105,30 @@ const Booking = () =>{
     setIsCaretOpen(!isCaretOpen);
   }
 
+  const toggleCalendar = (type) => {
+    setCalendarType(type);
+    setIsCalendarOpen(!isCalendarOpen);
+  };
+
+  //ĐANG GẶP VẤN ĐỀ CHỖ NÀY
+  const handleDateSelection = (dates) =>{
+    const[start, end] = dates;
+     if(end){
+      if(start instanceof Date && end instanceof Date){
+        if(start.getDate() === end.getDate()){ 
+          toast.error('Check-in and Check-out dates cannot be the same. Please select different dates.');
+          return;
+        }
+      }
+      setCheckInDate(start);
+      setCheckOutDate(end);
+      setIsCalendarOpen(false);
+     } else{
+      setCheckInDate(start);
+      setCheckOutDate(null);
+     }
+  };
+
   const { adults, setAdults, children, setChildren } = useContext(GuestContext);
   const incrementAdults = () =>setAdults(adults+1);
   const decrementAdults = () => setAdults(Math.max(1, adults-1));// Đảm bảo luôn ở mức tối thiểu là 1 guest
@@ -104,6 +136,17 @@ const Booking = () =>{
   const incrementChildren = () =>setChildren(children+1);
   const decrementChildren = () => setChildren(Math.max(0, children-1));// Đảm bảo luôn ở mức tối thiểu là 0 child
   
+  const formatDate = (date) => {
+    if (!(date instanceof Date)) return 'null';
+  
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    const weekday = date.toLocaleString('default', { weekday: 'long' });
+  
+    return `${weekday}, ${day} ${month} ${year}`;
+  };
+
   return ( 
     <div className='pageWrapper'>
 
@@ -281,20 +324,46 @@ const Booking = () =>{
 
 
 
-
-                            <button className='search-bar-container_checkIn' aria-label='Check-in .....' aria-expanded='false' aria-controls='calendar-flyout-container'>
+                            {/* <button className='search-bar-container_checkIn' aria-label='Check-in .....' aria-expanded='false'>
                               <IoCalendarOutline className='icon-calendar' />
                               <span className='search-bar-container-calendar_label'>
                                 <span>Check-in</span>
                               </span>
                             </button>
-                            <button className='search-bar-container_checkOut' aria-label='Check-out .....' aria-expanded='false' aria-controls='calendar-flyout-container'>
+                            <button className='search-bar-container_checkOut' aria-label='Check-out .....' aria-expanded='false'>
                               <IoCalendarOutline className='icon-calendar' />
                               <span className='search-bar-container-calendar_label'>
                                 <span>Check-out</span>
                               </span>
+                            </button> */}
+                             <button className='search-bar-container_checkIn' 
+                                aria-label='Check-in' 
+                                aria-expanded={isCalendarOpen && calendarType === 'checkin'}
+                                onClick={() => toggleCalendar('checkin')}>
+                                <IoCalendarOutline className='icon-calendar' />
+                                <span className='search-bar-container-calendar_label'>
+                                  <span>Check-in</span>
+                                </span>
+                                <span>{checkInDate ? formatDate(checkInDate) : ''}</span>
                             </button>
+                          <button className='search-bar-container_checkOut' 
+                                aria-label='Check-out' 
+                                aria-expanded={isCalendarOpen && calendarType === 'checkout'}
+                                onClick={() => toggleCalendar('checkout')}>
+                                <IoCalendarOutline className='icon-calendar' />
+                                <span className='search-bar-container-calendar_label'>
+                                  <span>Check-out</span>
+                                </span>
+                                <span>{checkOutDate ? formatDate(checkOutDate) : ''}</span>
+                          </button>
                           </div>
+
+
+                          {isCalendarOpen && (
+                            <div className='calendar-popup'>
+                              <CustomCalendar onDateChange={handleDateSelection}/>
+                            </div>
+                          )}
                           <div className='search-bar-container_advancedSearch'>
 
                           </div>

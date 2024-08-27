@@ -1,0 +1,252 @@
+
+.container-signup-page{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (min-width: 992px){
+    .col-lg-3{
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+@media (min-width: 992px){
+    .col-lg-9{
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+}
+
+.col-12, .col-md-6 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    /* padding-right: 15px; */
+    padding-left: 15px;
+}
+
+.col-lg-9{
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.page-content{
+    min-height: 90vh;
+    background-color: #f4f4f4;
+}
+
+.signup{
+    margin: auto;
+    max-width: 960px;
+}
+
+.signup .page-header .logo_beemembers {
+    max-width: 300px;
+}
+
+.signup .page-header {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #192430;
+}
+
+.signup .page-header img{
+    position: relative;
+    margin-left: 300px;
+    top: -20px;
+}
+
+.signup .section .required{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #666666;
+    font-size: 14px;
+    z-index: 10000;
+    float: right;
+}
+
+.signup .section .section-title{
+    margin-bottom: 20px;
+    color: black;
+}
+
+h6, .h6{
+    display: block;
+    line-height: 1.25em;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+}
+
+.page-content .form .form-group{
+    text-align: left;
+}
+
+.form-group{
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+}
+
+.form-group .password{
+    background-color: white;
+    color: black;
+}
+
+.form-group .password-toggle-icon svg{
+    position: relative;
+    transform: translateX(900px) translateY(-25px);
+    color: black;
+}
+
+label{
+    display: block;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    color: #666666;
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    margin-bottom: .5rem;
+}
+
+.custom-select {
+    display: inline-block;
+    width: 50%;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    vertical-align: middle;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 15px;
+    padding-right: 35px;
+    min-height: 35px;
+    line-height: 24px;
+    cursor: context-menu;
+    border: 1px solid #cdcdcd;
+    background-color: white;
+    background-size: 35px 35px;
+    background-position: right;
+    appearance: none;
+    color: black;
+}
+
+option{
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+    z-index: 2;
+    font-weight: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-group input{
+    width: 100%;
+    min-height: 35px;
+}
+
+.signup .section:after{
+    content: "";
+    margin: 50px auto;
+    display: block;
+    width: 150px;
+    height: 5px;
+    background-color: #4b3c21;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.back-to-booking {
+    padding: 30px 20px;
+    text-align: center;
+    background-color: white;
+    height: 100%;
+}
+
+.back-to-booking .logo_hotel{
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.back-to-booking .logo_hotel img{
+    position: relative;
+}
+
+.back-to-booking p{
+    color: #666666;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.back-to-booking .click-to-back a {
+    display: inline-block; /* Makes margin adjustments work */
+    margin-top: 10px; /* Moves the link down by 10px */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.5s ease, text-decoration 0.5s ease;
+}
+
+.back-to-booking .click-to-back a:hover {
+    text-decoration: underline;
+    color: #234277;
+}
+
+.back-to-booking .btn-link{
+    white-space: normal;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn-link, .btn-back {
+    padding: 6px 0;
+    color:  #4182f1;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn{
+    border: none;
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    vertical-align: middle;
+    border-style: none;
+}
+
+img[source]{
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
